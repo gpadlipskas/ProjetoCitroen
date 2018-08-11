@@ -45,11 +45,19 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.browse', {
-      url: '/browse',
+  .state('app.pontos', {
+      url: '/pontos',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/pontos.html'
+        }
+      }
+    })
+	.state('app.feiras', {
+      url: '/feiras',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/feiras.html'
         }
       }
     })
