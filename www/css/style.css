@@ -1,1 +1,18 @@
 /* Empty. Add your own CSS if you like */
+
+.bg-menu{
+	background-color: #FF6420 !important;
+	background-image: url('../img/logo-citro.png');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	font-size:20px
+}
+.item-content{
+	background-color: #FF6420 !important;
+	color: #fff !important;
+	font-size:20px;
+	
+}
+.item-content span{
+	padding-left:5px;
+}
