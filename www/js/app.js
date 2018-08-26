@@ -82,35 +82,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 		};
 	})
 
-// .config(function($stateProvider, $urlRouterProvider) {
-
-//   $stateProvider
-//   .state('map', {
-//     url: '/',
-//     templateUrl: 'templates/map.html',
-//     controller: 'MapCtrl'
-//   });
-
-//   $urlRouterProvider.otherwise("/");
-
-// })
-
-// .controller('MapCtrl', function($scope, $state, $cordovaGeolocation) {
-//   var options = {timeout: 10000, enableHighAccuracy: true};
-
-//   $cordovaGeolocation.getCurrentPosition(options).then(function(position){
-
-//     var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-//     var mapOptions = {
-//       center: latLng,
-//       zoom: 15,
-//       mapTypeId: google.maps.MapTypeId.ROADMAP
-//     };
-
-//     $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-//   }, function(error){
-//     console.log("Could not get location");
-//   });
-// })
+	.config(function($stateProvider, $urlRouterProvider) {
+ 
+		$stateProvider
+		.state('map', {
+		  url: '/',
+		  templateUrl: 'templates/pontoDeVenda.html',
+		  controller: 'pontoDeVendaCtrl'
+		});
+	   	   
+	  })
