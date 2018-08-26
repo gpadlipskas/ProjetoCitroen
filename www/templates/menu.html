@@ -1,34 +1,27 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bg-menu">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button></ion-nav-back-button>
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
       </ion-nav-buttons>
     </ion-nav-bar>
-    <ion-nav-view name="menuContent"></ion-nav-view>
+    <ion-nav-view name="side-menu21"></ion-nav-view>
   </ion-side-menu-content>
-
-  <ion-side-menu side="left" width="170" class="bg-menu">
-    <ion-content>
-      <ion-list>
-	  <div class="bg-menu">
-        <ion-item href="#"> <!--ng-click="login()"-->
-          <i class="icon ion-ios-game-controller-b"></i><span>JOGAR</span>
-        </ion-item>
-        <ion-item href="#/app/pontos">
-          <i class="icon ion-ios-game-controller-b"></i><span>PONTOS <br /> DE VENDA</span>
-        </ion-item>
-        <ion-item href="#/app/feiras">
-          <i class="icon ion-ios-game-controller-b"></i><span>FEIRAS</span>
-        </ion-item>
-		<ion-item href="#/app/feiras">
-          <i class="icon ion-ios-game-controller-b"></i><span>ENTRAR<br /> COM QR-CODE</span>
-        </ion-item>
-		</div>
+  <ion-side-menu side="left" id="side-menu21" style="background-color:#FF6421;">
+    <ion-header-bar class="bar-stable">
+      <div class="title">Menu</div>
+    </ion-header-bar>
+    <ion-content padding="false" style="background: url(img/0AR61YTsvH7cJ5EZgA36_b.png) no-repeat center;background-size:cover;" class="side-menu-left has-header ">
+      <ion-list id="menu-list1">
+        <ion-item class="item-icon-left assertive" id="menu-list-item1" ui-sref="menu.jogar()" menu-close="">
+          <i class="icon ion-ios-game-controller-b"></i>JOGAR</ion-item>
+        <ion-item class="item-icon-left assertive" id="menu-list-item6" ui-sref="menu.pontoDeVenda()" menu-close="">
+          <i class="icon ion-pinpoint"></i>PONTOS DE VENDA</ion-item>
+        <ion-item class="item-icon-left assertive" id="menu-list-item7" ui-sref="menu.feiras()" menu-close="">
+          <i class="icon ion-android-car"></i>FEIRAS</ion-item>
+        <ion-item class="item-icon-left assertive" id="menu-list-item8" ui-sref="menu.qRCODE()" menu-close="">
+          <i class="icon ion-qr-scanner"></i>QR-CODE</ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>
