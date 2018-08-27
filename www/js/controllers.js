@@ -31,11 +31,10 @@ angular.module('app.controllers', [])
             $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
             marker = new google.maps.Marker({
-                position : position,
-                icon: './img/lightblue.png',
-                setMap : map
-            });
-
+                position : latLng,
+                icon: './img/lightblue.png'
+			});
+			marker.setMap($scope.map);
         }, function (error) {
             console.log("Could not get location");
 
