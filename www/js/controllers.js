@@ -13,8 +13,6 @@ angular.module('app.controllers', [])
         $Ctrl = $scope;
         var options = { timeout: 10000, enableHighAccuracy: true };
         var latLng = null;
-        lat = -23.5745808;
-        lng = -46.6235209;
         var mapOptions = null;
         
         $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
