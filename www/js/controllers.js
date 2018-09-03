@@ -31,8 +31,7 @@ angular.module('app.controllers', [])
             $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
             marker = new google.maps.Marker({
-                position : latLng,
-                icon: './img/lightblue.png'
+                position : latLng
 			});
 			marker.setMap($scope.map);
         }, function (error) {
