@@ -5,13 +5,14 @@
 	"devDependencies": {
 		"@ionic/lab": "1.0.8",
 		"@ionic/v1-toolkit": "1.0.0",
-		"gulp": "^3.5.6",
+		"gulp": "^4.0.0",
 		"gulp-clean-css": "^3.7.0",
 		"gulp-rename": "^1.2.0",
 		"gulp-sass": "^3.1.0"
 	},
 	"dependencies": {
-		"cordova-android": "7.0.0",
+		"@ionic-native/geolocation": "^4.12.2",
+		"cordova-android": "^7.1.1",
 		"cordova-plugin-device": "^2.0.2",
 		"cordova-plugin-geolocation": "^4.0.1",
 		"cordova-plugin-ionic-keyboard": "^2.1.2",
@@ -28,7 +29,9 @@
 			"cordova-plugin-splashscreen": {},
 			"cordova-plugin-ionic-webview": {},
 			"cordova-plugin-ionic-keyboard": {},
-			"cordova-plugin-geolocation": {}
+			"cordova-plugin-geolocation": {
+				"GEOLOCATION_USAGE_DESCRIPTION": "Localização de pontos de vendas, e feiras automotivas."
+			}
 		},
 		"platforms": [
 			"android"

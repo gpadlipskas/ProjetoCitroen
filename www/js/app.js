@@ -82,13 +82,13 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 		};
 	})
 
-	.config(function($stateProvider, $urlRouterProvider) {
- 
+	.config(function ($stateProvider, $urlRouterProvider) {
+
 		$stateProvider
-		.state('map', {
-		  url: '/',
-		  templateUrl: 'templates/pontoDeVenda.html',
-		  controller: 'pontoDeVendaCtrl'
-		});
-	   	   
-	  })
+			.state('map', {
+				url: '/',
+				templateUrl: 'templates/pontoDeVenda.html',
+				controller: 'pontoDeVendaCtrl'
+			});
+
+	})

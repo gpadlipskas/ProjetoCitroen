@@ -13,16 +13,11 @@ log.txt
 npm-debug.log*
 
 .idea/
-.ionic/
-.sourcemaps/
+node_modules/
 .sass-cache/
 .tmp/
-.versions/
-coverage/
-node_modules/
 tmp/
 temp/
-platforms/
 $RECYCLE.BIN/
 
 .DS_Store
