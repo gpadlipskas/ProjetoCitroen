@@ -89,8 +89,16 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 				url: '/',
 				templateUrl: 'templates/pontoDeVenda.html',
 				controller: 'pontoDeVendaCtrl'
-			});
-
+			})
+			.state('jogar', {
+				url: '/jogar',
+				views: {
+				  'menuContent': {
+					templateUrl: 'templates/jogar.html',
+					controller: 'jogarCtrl'
+				  }
+				}
+			  });
 	})
 
 	.directive('googleplace', function () {
