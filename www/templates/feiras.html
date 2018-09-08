@@ -3,7 +3,8 @@
 		<form id="feiras-form2" class="list">
 			<label class="item item-input" id="feiras-search2" name="search">
 				<i class="icon ion-search placeholder-icon"></i>
-				<input type="search" placeholder="Pesquise aqui...">
+				<input type="search" placeholder="Rua, Número, Bairro, Cidade, Estado, Pais" ng-model="googleEndereco.route" ng-change="atualizar()"
+				 required googleplace>
 			</label>
 		</form>
 	</ion-content>

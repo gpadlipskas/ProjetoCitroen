@@ -8,7 +8,6 @@ angular.module('app.routes', [])
 		// Each state's controller can be found in controllers.js
 		$stateProvider
 
-
 			.state('menu.jogar', {
 				url: '/home',
 				views: {
@@ -39,12 +38,22 @@ angular.module('app.routes', [])
 				}
 			})
 
-			.state('menu.qRCODE', {
+			.state('menu.qrCode', {
 				url: '/qrCode',
 				views: {
 					'side-menu21': {
-						templateUrl: 'templates/qRCODE.html',
-						controller: 'qRCODECtrl'
+						templateUrl: 'templates/qrCode.html',
+						controller: 'qrCodeCtrl'
+					}
+				}
+			})
+
+			.state('menu.local', {
+				url: '/local',
+				views: {
+					'side-menu21': {
+						templateUrl: 'templates/local.html',
+						controller: 'localCtrl'
 					}
 				}
 			})

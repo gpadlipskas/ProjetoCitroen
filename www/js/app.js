@@ -92,3 +92,41 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 			});
 
 	})
+
+	.directive('googleplace', function () {
+		return {
+			require: 'ngModel',
+
+			link: function (scope, element, attrs, model) {
+				var options = {
+					types: ['address']
+
+				};
+				scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
+
+				google.maps.event.addListener(scope.gPlace, 'place_changed', function () {
+					var geoComponents = scope.gPlace.getPlace();
+					var latitude = geoComponents.geometry.location.lat();
+					var longitude = geoComponents.geometry.location.lng();
+					var coordenadas = [latitude, longitude];
+					var addresscomponents = geoComponents.address_components;
+
+					var components;
+					components = {};
+
+					angular.forEach(addresscomponents, function (address_component) {
+						angular.forEach(address_component.types, function (type) {
+							components[type] = address_component.long_name;
+						});
+					});
+
+					components['coordenadas'] = coordenadas;
+
+					scope.$apply(function () {
+						var retorno = components;
+						model.$setViewValue(retorno);
+					});
+				});
+			},
+		};
+	});
