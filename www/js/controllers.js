@@ -217,7 +217,14 @@ angular.module('app.controllers', [])
       batata.save();
 		  ctx.font = 'bold 30px Montserrat, Arial';
       batata.font = 'bold 15px Montserrat, Arial';
-      var premio = "SEU PRÊMIO É"
+      if (options[index] == "NÃO FOI DESSA VEZ")
+      {
+          var premio = "";
+      }
+      else
+      {
+          var premio = "SEU PRÊMIO É";
+      }
       batata.fillText(premio, 160 - ctx.measureText(text).width / 2, 325 + 10);
 		  var text = options[index]
 		  ctx.fillText(text, 175 - ctx.measureText(text).width / 2, 360 + 10);
