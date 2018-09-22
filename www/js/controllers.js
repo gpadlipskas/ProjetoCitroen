@@ -135,10 +135,11 @@ angular.module('app.controllers', [])
 		  var canvas = document.getElementById("canvas");
 		  if (canvas.getContext) {
 			var outsideRadius = 125;
-			var textRadius = 95;
-			var insideRadius = 70;
+			var textRadius = 70;
+			var insideRadius = 10;
 
 			ctx = canvas.getContext("2d");
+      batata = canvas.getContext("2d");
 			ctx.clearRect(0,0,500,500);
 
 			ctx.strokeStyle = "black";
@@ -174,14 +175,14 @@ angular.module('app.controllers', [])
 			//Arrow
 			ctx.fillStyle = "black";
 			ctx.beginPath();
-			ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
-			ctx.lineTo(250 + 4, 250 - (outsideRadius + 5));
-			ctx.lineTo(250 + 4, 250 - (outsideRadius - 5));
-			ctx.lineTo(250 + 9, 250 - (outsideRadius - 5));
-			ctx.lineTo(250 + 0, 250 - (outsideRadius - 13));
-			ctx.lineTo(250 - 9, 250 - (outsideRadius - 5));
-			ctx.lineTo(250 - 4, 250 - (outsideRadius - 5));
-			ctx.lineTo(250 - 4, 250 - (outsideRadius + 5));
+			ctx.moveTo(175 - 4, 175 - (outsideRadius + 5));
+			ctx.lineTo(175 + 4, 175 - (outsideRadius + 5));
+			ctx.lineTo(175 + 4, 175 - (outsideRadius - 5));
+			ctx.lineTo(175 + 9, 175 - (outsideRadius - 5));
+			ctx.lineTo(175 + 0, 175 - (outsideRadius - 13));
+			ctx.lineTo(175 - 9, 175 - (outsideRadius - 5));
+			ctx.lineTo(175 - 4, 175 - (outsideRadius - 5));
+			ctx.lineTo(175 - 4, 175 - (outsideRadius + 5));
 			ctx.fill();
 		  }
 		}
@@ -213,9 +214,13 @@ angular.module('app.controllers', [])
 		  var arcd = arc * 180 / Math.PI;
 		  var index = Math.floor((360 - degrees % 360) / arcd);
 		  ctx.save();
-		  ctx.font = 'bold 20px Montserrat, Arial';
+      batata.save();
+		  ctx.font = 'bold 30px Montserrat, Arial';
+      batata.font = 'bold 15px Montserrat, Arial';
+      var premio = "SEU PRÊMIO É"
+      batata.fillText(premio, 160 - ctx.measureText(text).width / 2, 325 + 10);
 		  var text = options[index]
-		  ctx.fillText(text, 175 - ctx.measureText(text).width / 2, 175 + 10);
+		  ctx.fillText(text, 175 - ctx.measureText(text).width / 2, 360 + 10);
 		  ctx.restore();
 		}
 
