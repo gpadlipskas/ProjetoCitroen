@@ -88,14 +88,14 @@ angular.module('app.controllers', [])
 
 
         }])
-		
-		
-    .controller('jogarCtrl', ['$scope', '$stateParams', '$timeout', 
+
+
+    .controller('jogarCtrl', ['$scope', '$stateParams', '$timeout',
         // You can include any angular dependencies as parameters for this function
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
         function ($scope, $stateParams, $timeout) {
 
-		var options = ["CinemaMock", "OutraCoisaMock", "MaisUmMock", "OutraMock", "Nada"];
+		var options = ["TEST DRIVE", "BRINDE", "NÃO FOI DESSA VEZ"];
 
 		var startAngle = 0;
 		var arc = Math.PI / (options.length / 2);
@@ -123,20 +123,20 @@ angular.module('app.controllers', [])
 		  var center = 128;
 		  var width = 127;
 		  var frequency = Math.PI*2/maxitem;
-		  
+
 		  red   = Math.sin(frequency*item+2+phase) * width + center;
 		  green = Math.sin(frequency*item+0+phase) * width + center;
 		  blue  = Math.sin(frequency*item+4+phase) * width + center;
-		  
+
 		  return RGB2Color(red,green,blue);
 		}
 
 		function drawRouletteWheel() {
 		  var canvas = document.getElementById("canvas");
 		  if (canvas.getContext) {
-			var outsideRadius = 200;
-			var textRadius = 160;
-			var insideRadius = 125;
+			var outsideRadius = 125;
+			var textRadius = 95;
+			var insideRadius = 70;
 
 			ctx = canvas.getContext("2d");
 			ctx.clearRect(0,0,500,500);
@@ -144,7 +144,7 @@ angular.module('app.controllers', [])
 			ctx.strokeStyle = "black";
 			ctx.lineWidth = 2;
 
-			ctx.font = 'bold 12px Helvetica, Arial';
+			ctx.font = 'bold 12px Montserrat, Arial';
 
 			for(var i = 0; i < options.length; i++) {
 			  var angle = startAngle + i * arc;
@@ -152,8 +152,8 @@ angular.module('app.controllers', [])
 			  ctx.fillStyle = getColor(i, options.length);
 
 			  ctx.beginPath();
-			  ctx.arc(250, 250, outsideRadius, angle, angle + arc, false);
-			  ctx.arc(250, 250, insideRadius, angle + arc, angle, true);
+			  ctx.arc(175, 175, outsideRadius, angle, angle + arc, false);
+			  ctx.arc(175, 175, insideRadius, angle + arc, angle, true);
 			  ctx.stroke();
 			  ctx.fill();
 
@@ -163,13 +163,13 @@ angular.module('app.controllers', [])
 			  ctx.shadowBlur    = 0;
 			  ctx.shadowColor   = "rgb(220,220,220)";
 			  ctx.fillStyle = "black";
-			  ctx.translate(250 + Math.cos(angle + arc / 2) * textRadius, 
-							250 + Math.sin(angle + arc / 2) * textRadius);
+			  ctx.translate(175 + Math.cos(angle + arc / 2) * textRadius,
+							175 + Math.sin(angle + arc / 2) * textRadius);
 			  ctx.rotate(angle + arc / 2 + Math.PI / 2);
 			  var text = options[i];
 			  ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
 			  ctx.restore();
-			} 
+			}
 
 			//Arrow
 			ctx.fillStyle = "black";
@@ -213,9 +213,9 @@ angular.module('app.controllers', [])
 		  var arcd = arc * 180 / Math.PI;
 		  var index = Math.floor((360 - degrees % 360) / arcd);
 		  ctx.save();
-		  ctx.font = 'bold 30px Helvetica, Arial';
+		  ctx.font = 'bold 20px Montserrat, Arial';
 		  var text = options[index]
-		  ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
+		  ctx.fillText(text, 175 - ctx.measureText(text).width / 2, 175 + 10);
 		  ctx.restore();
 		}
 
