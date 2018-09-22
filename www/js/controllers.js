@@ -95,7 +95,7 @@ angular.module('app.controllers', [])
         // TIP: Access Route Parameters for your page via $stateParams.parameterName
         function ($scope, $stateParams, $timeout) {
 
-		var options = ["TEST DRIVE", "BRINDE", "NÃO FOI DESSA VEZ"];
+		var options = ["TEST DRIVE", "CARRINHO", "CHAVEIRO", "NÃO FOI DESSA VEZ"];
 
 		var startAngle = 0;
 		var arc = Math.PI / (options.length / 2);
