@@ -48,7 +48,7 @@ angular.module('app.routes', [])
 				}
 			})
 
-			.state('menu.login'{
+			.state('menu.login', {
 				url: 'login',
 				views: {
 					'side-menu21': {
@@ -72,7 +72,7 @@ angular.module('app.routes', [])
 				url: '/sidebar',
 				templateUrl: 'templates/menu.html',
 				controller: 'menuCtrl'
-			})
+			});
 
 		$urlRouterProvider.otherwise('/sidebar/home')
 
