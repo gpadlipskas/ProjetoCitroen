@@ -58,16 +58,6 @@ angular.module('app.routes', [])
 				}
 			})
 
-			.state('menu.local', {
-				url: '/local',
-				views: {
-					'side-menu21': {
-						templateUrl: 'templates/local.html',
-						controller: 'localCtrl'
-					}
-				}
-			})
-
 			.state('menu', {
 				url: '/sidebar',
 				templateUrl: 'templates/menu.html',
