@@ -85,8 +85,6 @@ angular.module('app.controllers', [])
 
 			var ctx;
 
-			document.getElementById("spin").addEventListener("click", spin);
-
 			function byte2Hex(n) {
 				var nybHexString = "0123456789ABCDEF";
 				return String(nybHexString.substr((n >> 4) & 0x0F, 1)) + nybHexString.substr(n & 0x0F, 1);
@@ -109,7 +107,7 @@ angular.module('app.controllers', [])
 				return RGB2Color(red, green, blue);
 			}
 
-			function drawRouletteWheel() {
+			$scope.drawRouletteWheel = function() {
 				var canvas = document.getElementById("canvas");
 				if (canvas.getContext) {
 					var outsideRadius = 125;
@@ -165,7 +163,7 @@ angular.module('app.controllers', [])
 				}
 			}
 
-			function spin() {
+			$scope.spin = function() {
 				spinAngleStart = Math.random() * 10 + 10;
 				spinTime = 0;
 				spinTimeTotal = Math.random() * 3 + 4 * 1000;
@@ -175,19 +173,19 @@ angular.module('app.controllers', [])
 			$scope.rodaRoda = function () {
 				spinTime += 30;
 				if (spinTime >= spinTimeTotal) {
-					stopRotateWheel();
+					$scope.stopRotateWheel();
 					return;
 				}
 				var spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
 				startAngle += (spinAngle * Math.PI / 180);
-				drawRouletteWheel();
-				spinTimeout = $timeout(function () {
+				$scope.drawRouletteWheel();
+				$scope.spinTimeout = $timeout(function () {
 					$scope.rodaRoda();
 				}, 30);;
 			}
 
-			function stopRotateWheel() {
-				clearTimeout(spinTimeout);
+			$scope.stopRotateWheel = function() {
+				clearTimeout($scope.spinTimeout);
 				var degrees = startAngle * 180 / Math.PI + 90;
 				var arcd = arc * 180 / Math.PI;
 				var index = Math.floor((360 - degrees % 360) / arcd);
@@ -213,7 +211,7 @@ angular.module('app.controllers', [])
 				return b + c * (tc + -3 * ts + 3 * t);
 			}
 
-			drawRouletteWheel();
+			$scope.drawRouletteWheel();
 		}])
 
 	.controller('loginCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
