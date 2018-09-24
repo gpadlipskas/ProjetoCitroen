@@ -86,7 +86,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 
 		$stateProvider
 			.state('map', {
-				url: '/',
+				url: '/pontos_de_venda',
 				templateUrl: 'templates/pontoDeVenda.html',
 				controller: 'pontoDeVendaCtrl'
 			})

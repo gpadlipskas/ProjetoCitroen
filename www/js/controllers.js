@@ -30,7 +30,6 @@ angular.module('app.controllers', [])
 			var marker1 = [];
 
 			// forEach para percorrer todos os dados da collection locais e colocar um marker de acordo com as coordenadas
-
 			Array.prototype.forEach.call($Ctrl.locais, locais => {
 				p1[0] = new google.maps.LatLng($Ctrl.locais.endereco.cordenadas.lat[0], $Ctrl.locais.endereco.cordenadas.lng[0]);
 				infoWindow1[0] = new google.maps.InfoWindow({ content: $Ctrl.locais.endereco.titulo[0] });
