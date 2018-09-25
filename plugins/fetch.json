@@ -8,5 +8,13 @@
     "variables": {
       "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
     }
+  },
+  "phonegap-plugin-barcodescanner": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/phonegap/phonegap-plugin-barcodescanner.git"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
