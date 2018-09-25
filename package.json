@@ -30,6 +30,7 @@
 		"mongoose": "^5.2.17",
 		"node-sass": "^4.9.3",
 		"npm": "^6.4.1",
+		"phonegap-plugin-barcodescanner": "git+https://github.com/phonegap/phonegap-plugin-barcodescanner.git",
 		"rxjs": "^6.3.2",
 		"zone.js": "^0.8.26"
 	},
@@ -42,7 +43,8 @@
 			"cordova-plugin-ionic-keyboard": {},
 			"cordova-plugin-geolocation": {
 				"GEOLOCATION_USAGE_DESCRIPTION": "Localização de pontos de vendas, e feiras automotivas."
-			}
+			},
+			"phonegap-plugin-barcodescanner": {}
 		},
 		"platforms": [
 			"android"
