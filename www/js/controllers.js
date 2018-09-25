@@ -1,6 +1,8 @@
 angular.module('app.controllers', [])
   .controller('pontoDeVendaCtrl', function ($cordovaGeolocation, $scope, $dataFactory) {
-
+	
+	navigator.permissions.query({'name': 'geolocation'})
+		.then( permission =>  
     $cordovaGeolocation.getCurrentPosition().then((resp) => {
 
       // Inicialização e configuração do mapa, centrado na FIAP
@@ -36,8 +38,8 @@ angular.module('app.controllers', [])
       };
 
       $dataFactory.getLocais().then(function (res) {
-        $Ctrl.locais = res.result;
-        console.log(res.result)
+        $Ctrl.locais = res;
+        console.log(res)
       });
 
       // Declaração das variáveis do forEach
@@ -63,7 +65,8 @@ angular.module('app.controllers', [])
 
     }, function (error) {
       console.log("Não foi possível determinar sua localização.");
-    });
+    }));
+	
   })
 
   .controller('feirasCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
