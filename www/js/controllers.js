@@ -16,7 +16,8 @@ angular.module('app.controllers', [])
         streetViewControl: false,
         mapTypeId: 'roadmap'
       };
-      var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+      
+	  $scope.map = new google.maps.Map(document.getElementById("map"), mapOptions);
       var infoWindow0 = new google.maps.InfoWindow({
         content: "Estou Aqui!"
       });
@@ -25,42 +26,38 @@ angular.module('app.controllers', [])
         animation: google.maps.Animation.DROP
       }); //DROP | BOUNCE
       google.maps.event.addListener(marker0, 'click', function () {
-        infoWindow0.open(map, marker0)
+        infoWindow0.open($scope.map, marker0)
       });
-      marker0.setMap(map);
-
-      // Variáveis de Locais( para chamar os dados cadastrados no banco )
-      $Ctrl = $scope;
-      $Ctrl.locais = {
-        endereco: {
-          coordenadas: {}
-        }
-      };
+      marker0.setMap($scope.map);
 
       $dataFactory.getLocais().then(function (res) {
-        $Ctrl.locais = res;
-        console.log(res)
-      });
-
+        
       // Declaração das variáveis do forEach
       var p1 = [];
-      var infoWindow1 = [];
-      var marker1 = [];
-
+      $scope.infoWindow1 = [];
+	  $scope.markers = [];
+	  $scope.infoWindows = [];
       // forEach para percorrer todos os dados da collection locais e colocar um marker de acordo com as coordenadas
-      Array.prototype.forEach.call($Ctrl.locais, locais => {
-        p1[0] = new google.maps.LatLng($Ctrl.locais.endereco.cordenadas.lat[0], $Ctrl.locais.endereco.cordenadas.lng[0]);
-        infoWindow1[0] = new google.maps.InfoWindow({
-          content: $Ctrl.locais.endereco.titulo[0]
+      for(var i = 0; i < res.length; i++){
+		p1 = new google.maps.LatLng(res[i].lat, res[i].lng);
+        $scope.infoWindow1[i] = new google.maps.InfoWindow({
+          content: res[i].nome
         });
-        marker1[0] = new google.maps.Marker({
-          position: p1[0],
+        var marker1 = new google.maps.Marker({
+          position: p1,
           animation: google.maps.Animation.DROP
         });
-        google.maps.event.addListener(marker1[0], 'click', function () {
-          infoWindow1[0].open(map, marker1[0])
+        
+        marker1.setMap($scope.map);
+		$scope.infoWindows.push($scope.infoWindow1[i]);
+		$scope.markers.push(marker1);		
+		}
+		for(var i = 0; i < $scope.markers.length; i++){
+		google.maps.event.addListener($scope.markers[i], 'click', function () {
+          $scope.infoWindows[i].open($scope.map, $scope.markers[i])
+		
         });
-        marker1[0].setMap(map);
+		}
       });
 
     }, function (error) {
