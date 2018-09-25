@@ -2,7 +2,7 @@ angular.module('app.controllers', [])
   .controller('pontoDeVendaCtrl', function ($cordovaGeolocation, $scope, $dataFactory) {
 	
 	navigator.permissions.query({'name': 'geolocation'})
-		.then( permission =>  
+		.then( permission =>  console.info(permission));
     $cordovaGeolocation.getCurrentPosition().then((resp) => {
 
       // Inicialização e configuração do mapa, centrado na FIAP
@@ -65,7 +65,7 @@ angular.module('app.controllers', [])
 
     }, function (error) {
       console.log("Não foi possível determinar sua localização.");
-    }));
+    });
 	
   })
 
