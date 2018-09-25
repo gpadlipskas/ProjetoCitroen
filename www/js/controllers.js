@@ -1,8 +1,10 @@
 angular.module('app.controllers', [])
   .controller('pontoDeVendaCtrl', function ($cordovaGeolocation, $scope, $dataFactory) {
-	
-	navigator.permissions.query({'name': 'geolocation'})
-		.then( permission =>  console.info(permission));
+
+    navigator.permissions.query({
+        'name': 'geolocation'
+      })
+      .then(permission => console.info(permission));
     $cordovaGeolocation.getCurrentPosition().then((resp) => {
 
       // Inicialização e configuração do mapa, centrado na FIAP
@@ -66,7 +68,7 @@ angular.module('app.controllers', [])
     }, function (error) {
       console.log("Não foi possível determinar sua localização.");
     });
-	
+
   })
 
   .controller('feirasCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -78,14 +80,16 @@ angular.module('app.controllers', [])
     }
   ])
 
-  .controller('qrCodeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-    // You can include any angular dependencies as parameters for this function
-    // TIP: Access Route Parameters for your page via $stateParams.parameterName
-    function ($scope, $stateParams) {
-
-
+  .controller('qrCodeCtrl', ['$scope', '$stateParams', '$cordovaBarcodeScanner', function ($scope, $stateParams, $cordovaBarcodeScanner) {
+    $scope.scanBarcode = function () {
+      $cordovaBarcodeScanner.scan().then(function (imageData) {
+        alert(imageData.text);
+        console.log(imageData.format);
+      }, function (error) {
+        console.log(error)
+      });
     }
-  ])
+  }])
 
   .controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
     // You can include any angular dependencies as parameters for this function
