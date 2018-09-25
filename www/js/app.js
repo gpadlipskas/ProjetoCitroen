@@ -7,96 +7,101 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives', 'app.services', 'ngCordova'])
 
-	.config(function ($ionicConfigProvider, $sceDelegateProvider) {
+  .config(function ($ionicConfigProvider, $sceDelegateProvider) {
 
-		$sceDelegateProvider.resourceUrlWhitelist(['self', '*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
+    $sceDelegateProvider.resourceUrlWhitelist(['self', '*://www.youtube.com/**', '*://player.vimeo.com/video/**']);
 
-	})
+  })
 
-	.run(function ($ionicPlatform) {
-		$ionicPlatform.ready(function () {
-			// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-			// for form inputs)
-			if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-				cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-				cordova.plugins.Keyboard.disableScroll(true);
-			}
-			if (window.StatusBar) {
-				// org.apache.cordova.statusbar required
-				StatusBar.styleDefault();
-			}
-		});
-	})
+  .config(function ($httpProvider) {
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
+  })
 
-	/*
-	  This directive is used to disable the "drag to open" functionality of the Side-Menu
-	  when you are dragging a Slider component.
-	*/
-	.directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function ($ionicSideMenuDelegate, $rootScope) {
-		return {
-			restrict: "A",
-			controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
+  .run(function ($ionicPlatform) {
+    $ionicPlatform.ready(function () {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
+      }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
+  })
 
-				function stopDrag() {
-					$ionicSideMenuDelegate.canDragContent(false);
-				}
+  /*
+    This directive is used to disable the "drag to open" functionality of the Side-Menu
+    when you are dragging a Slider component.
+  */
+  .directive('disableSideMenuDrag', ['$ionicSideMenuDelegate', '$rootScope', function ($ionicSideMenuDelegate, $rootScope) {
+    return {
+      restrict: "A",
+      controller: ['$scope', '$element', '$attrs', function ($scope, $element, $attrs) {
 
-				function allowDrag() {
-					$ionicSideMenuDelegate.canDragContent(true);
-				}
+        function stopDrag() {
+          $ionicSideMenuDelegate.canDragContent(false);
+        }
 
-				$rootScope.$on('$ionicSlides.slideChangeEnd', allowDrag);
-				$element.on('touchstart', stopDrag);
-				$element.on('touchend', allowDrag);
-				$element.on('mousedown', stopDrag);
-				$element.on('mouseup', allowDrag);
+        function allowDrag() {
+          $ionicSideMenuDelegate.canDragContent(true);
+        }
 
-			}]
-		};
-	}])
+        $rootScope.$on('$ionicSlides.slideChangeEnd', allowDrag);
+        $element.on('touchstart', stopDrag);
+        $element.on('touchend', allowDrag);
+        $element.on('mousedown', stopDrag);
+        $element.on('mouseup', allowDrag);
 
-	/*
-	  This directive is used to open regular and dynamic href links inside of inappbrowser.
-	*/
-	.directive('hrefInappbrowser', function () {
-		return {
-			restrict: 'A',
-			replace: false,
-			transclude: false,
-			link: function (scope, element, attrs) {
-				var href = attrs['hrefInappbrowser'];
+      }]
+    };
+  }])
 
-				attrs.$observe('hrefInappbrowser', function (val) {
-					href = val;
-				});
+  /*
+    This directive is used to open regular and dynamic href links inside of inappbrowser.
+  */
+  .directive('hrefInappbrowser', function () {
+    return {
+      restrict: 'A',
+      replace: false,
+      transclude: false,
+      link: function (scope, element, attrs) {
+        var href = attrs['hrefInappbrowser'];
 
-				element.bind('click', function (event) {
+        attrs.$observe('hrefInappbrowser', function (val) {
+          href = val;
+        });
 
-					window.open(href, '_system', 'location=yes');
+        element.bind('click', function (event) {
 
-					event.preventDefault();
-					event.stopPropagation();
+          window.open(href, '_system', 'location=yes');
 
-				});
-			}
-		};
-	})
+          event.preventDefault();
+          event.stopPropagation();
 
-	.config(function ($stateProvider, $urlRouterProvider) {
+        });
+      }
+    };
+  })
 
-		$stateProvider
-			.state('map', {
-				url: '/pontos_de_venda',
-				templateUrl: 'templates/pontoDeVenda.html',
-				controller: 'pontoDeVendaCtrl'
-			})
-			.state('jogar', {
-				url: '/jogar',
-				views: {
-					'menuContent': {
-						templateUrl: 'templates/jogar.html',
-						controller: 'jogarCtrl'
-					}
-				}
-			});
-	})
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $stateProvider
+      .state('map', {
+        url: '/pontos_de_venda',
+        templateUrl: 'templates/pontoDeVenda.html',
+        controller: 'pontoDeVendaCtrl'
+      })
+      .state('jogar', {
+        url: '/jogar',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/jogar.html',
+            controller: 'jogarCtrl'
+          }
+        }
+      });
+  })
