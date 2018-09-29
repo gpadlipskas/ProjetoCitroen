@@ -1,0 +1,28 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-stable">
+			<ion-nav-back-button></ion-nav-back-button>
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="side-menu21"></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="left" id="side-menu21" style="background-color:#ff6412">
+		<ion-header-bar class="bar-stable">
+			<div class="title">Menu</div>
+		</ion-header-bar>
+		<ion-content padding="false" style="background: url(img/logoCitroen.png) no-repeat center;background-size:cover;" class="side-menu-left has-header ">
+			<ion-list id="menu-list1">
+				<ion-item class="item-icon-left assertive" id="menu-list-item1" ui-sref="menu.jogar()" menu-close="">
+					<i class="icon ion-ios-game-controller-b"></i>JOGAR</ion-item>
+				<ion-item class="item-icon-left assertive" id="menu-list-item6" ui-sref="menu.pontoDeVenda()" menu-close="">
+					<i class="icon ion-pinpoint"></i>PONTOS DE VENDA</ion-item>
+				<ion-item class="item-icon-left assertive" id="menu-list-item7" ui-sref="menu.feiras()" menu-close="">
+					<i class="icon ion-android-car"></i>FEIRAS</ion-item>
+				<ion-item class="item-icon-left assertive" id="menu-list-login" ui-sref="menu.login()" menu-close="">
+					<i class="icon ion-ios-person"></i>LOGIN</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>
