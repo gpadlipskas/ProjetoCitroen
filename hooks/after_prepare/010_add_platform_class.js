@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 // Add Platform Class
 // v1.0
 // Automatically adds the platform class to the body tag
@@ -8,13 +7,17 @@
 // rendering the correct layout/style for the specific platform
 // instead of waiting for the JS to figure out the correct classes.
 
+__caminhoBase = __dirname;
 var fs = require('fs');
 var path = require('path');
-var index = require('../../backend/routes');
 var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-__caminhoBase = __dirname;
+var rootdir = process.argv[2];
+
+var firebase = require('firebase/app');
+require('firebase/auth');
+require('firebase/database');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -22,24 +25,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'www')));
 app.use('/', index);
 
-var rootdir = process.argv[2];
+var app = firebase.initializeApp({});
+var gcloud = require('google-cloud')({});
+var gcs = gcloud.storage();
+var bucket = gcs.bucket('<your-firebase-storage-bucket>');
 
 function addPlatformBodyTag(indexPath, platform) {
 	// add the platform class to the body tag
 	try {
 		var platformClass = 'platform-' + platform;
 		var cordovaClass = 'platform-cordova platform-webview';
-
 		var html = fs.readFileSync(indexPath, 'utf8');
-
 		var bodyTag = findBodyTag(html);
-		if (!bodyTag) return; // no opening body tag, something's wrong
 
+		if (!bodyTag) return; // no opening body tag, something's wrong
 		if (bodyTag.indexOf(platformClass) > -1) return; // already added
 
 		var newBodyTag = bodyTag;
-
 		var classAttr = findClassAttr(bodyTag);
+
 		if (classAttr) {
 			// body tag has existing class attribute, add the classname
 			var endingQuote = classAttr.substring(classAttr.length - 1);
@@ -50,31 +54,30 @@ function addPlatformBodyTag(indexPath, platform) {
 		} else {
 			// add class attribute to the body tag
 			newBodyTag = bodyTag.replace('>', ' class="' + platformClass + ' ' + cordovaClass + '">');
-		}
+		};
 
 		html = html.replace(bodyTag, newBodyTag);
-
 		fs.writeFileSync(indexPath, html, 'utf8');
-
 		process.stdout.write('add to body class: ' + platformClass + '\n');
+
 	} catch (e) {
 		process.stdout.write(e);
-	}
-}
+	};
+};
 
 function findBodyTag(html) {
 	// get the body tag
 	try {
 		return html.match(/<body(?=[\s>])(.*?)>/gi)[0];
-	} catch (e) { }
-}
+	} catch (e) { };
+};
 
 function findClassAttr(bodyTag) {
 	// get the body tag's class attribute
 	try {
 		return bodyTag.match(/ class=["|'](.*?)["|']/gi)[0];
-	} catch (e) { }
-}
+	} catch (e) { };
+};
 
 if (rootdir) {
 
@@ -91,15 +94,12 @@ if (rootdir) {
 				indexPath = path.join('platforms', platform, 'assets', 'www', 'index.html');
 			} else {
 				indexPath = path.join('platforms', platform, 'www', 'index.html');
-			}
-
+			};
 			if (fs.existsSync(indexPath)) {
 				addPlatformBodyTag(indexPath, platform);
-			}
-
+			};
 		} catch (e) {
 			process.stdout.write(e);
-		}
-	}
-
-}
+		};
+	};
+};

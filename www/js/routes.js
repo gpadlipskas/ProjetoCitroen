@@ -38,33 +38,24 @@ angular.module('app.routes', [])
 				}
 			})
 
-			.state('menu.qrCode', {
-				url: '/qrCode',
-				views: {
-					'side-menu21': {
-						templateUrl: 'templates/qrCode.html',
-						controller: 'qrCodeCtrl'
-					}
-				}
-			})
-
-			.state('menu.login', {
-				url: 'login',
-				views: {
-					'side-menu21': {
-						templateUrl: 'templates/login.html',
-						controller: 'loginCtrl'
-					}
-				}
+			.state('login', {
+				url: '/login',
+				templateUrl: 'templates/login.html',
+				controller: 'loginCtrl'
 			})
 
 			.state('menu', {
 				url: '/sidebar',
 				templateUrl: 'templates/menu.html',
 				controller: 'menuCtrl'
-			});
+			})
 
-		$urlRouterProvider.otherwise('/sidebar/home')
+			.state('cadastro', {
+				url: '/cadastro',
+				templateUrl: 'templates/cadastro.html',
+				controller: 'cadastroCtrl'
+			})
 
+		$urlRouterProvider.otherwise('/login')
 
 	});

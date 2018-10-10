@@ -1,5 +1,26 @@
-<ion-view title="Login" id="login" style="background-color:#E0E0E0;">
-    <ion-content padding="true" class="has-header">
-
+<ion-view title="Login" id="login" style="background-color:#ffffff;">
+    <ion-content padding="true" class="has-header" style="margin: 0px 20px">
+        <div style="line-height: 250px; text-align: center; background: url(img/logoCitroenLogin.png) no-repeat center;background-size:75%;">
+            <i class="
+            icon ion-image" style="font-size: 1px"></i>
+        </div>
+        <form id="login-form1" class="list">
+            <ion-list id="cadastro-list1">
+                <label class="item item-input" id="login-input1" name="email" style="border-style:solid;border-color:#17757c;color:#17757c"
+                    ng-model="dados.email">
+                    <span class="input-label">Email</span>
+                    <input placeholder="Digite o e-mail" type="email">
+                </label>
+                <label class="item item-input" id="login-input2" name="senha" style="border-style:solid;border-color:#17757c;color:#17757c;"
+                    ng-model="dados.senha">
+                    <span class="input-label">Senha</span>
+                    <input placeholder="Digite a senha" type="password">
+                </label>
+                <a ui-sref="jogar()" id="login-button2" class="button button-block" style="background-color:#17757c;color:white">Login</a>
+                <a ui-sref="cadastro()" id="login-button1" class="button button-small button-block button-outline"
+                    style="border-style:solid;border-color:#17757c;color:#17757c;">Não
+                    tem uma conta? Cadastre-se</a>
+            </ion-list>
+        </form>
     </ion-content>
 </ion-view>
