@@ -29,11 +29,21 @@ angular.module('app.routes', [])
 			})
 
 			.state('menu.feiras', {
-				url: '/feiras',
+				url: '/pontos_de_venda',
 				views: {
 					'side-menu21': {
 						templateUrl: 'templates/feiras.html',
-						controller: 'feirasCtrl'
+						controller: 'pontoDeVendaCtrl'
+					}
+				}
+			})
+
+			.state('menu.premios', {
+				url: '/premios',
+				views: {
+					'side-menu21': {
+						templateUrl: 'templates/premios.html',
+						controller: 'premiosCtrl'
 					}
 				}
 			})
@@ -43,6 +53,7 @@ angular.module('app.routes', [])
 				templateUrl: 'templates/login.html',
 				controller: 'loginCtrl'
 			})
+			
 
 			.state('menu', {
 				url: '/sidebar',

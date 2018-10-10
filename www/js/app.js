@@ -89,6 +89,7 @@ angular.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.directives
 				templateUrl: 'templates/pontoDeVenda.html',
 				controller: 'pontoDeVendaCtrl'
 			})
+			
 			.state('jogar', {
 				url: '/jogar',
 				views: {
